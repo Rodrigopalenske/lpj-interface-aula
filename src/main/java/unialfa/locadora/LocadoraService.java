@@ -18,7 +18,7 @@ public class LocadoraService {
 
         readerFile().forEach(linha -> {
             String[] filmeArray = linha.split(":");
-            filmes.add(new Filme(filmeArray[0], filmeArray[1]));
+            filmes.add(new Filme(filmeArray[0], filmeArray[1], filmeArray[2], filmeArray[3], filmeArray[4]));
         });
 
         return filmes;
