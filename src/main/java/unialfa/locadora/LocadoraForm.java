@@ -18,7 +18,7 @@ public class LocadoraForm extends JFrame {
     private JTextField campoClassificacao;
     private JButton botaoSalvar;
     private JList<Filme> listaDeFilmes;
-    private Boolean permitirExecao = Boolean.FALSE;
+    private Boolean permitirExcecao = Boolean.FALSE;
     private String[] data = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10"};
 
     public LocadoraForm() {
@@ -114,7 +114,7 @@ public class LocadoraForm extends JFrame {
     }
 
     private void executarAcaoDoBotao() {
-        permitirExecao = Boolean.TRUE;
+        permitirExcecao = Boolean.TRUE;
         verificaCampos(campoNomeFilme.getText(), "Nome do Filme");
         verificaCampos(campoDiretor.getText(), "Nome do Diretor");
 
@@ -123,7 +123,7 @@ public class LocadoraForm extends JFrame {
         verificaCampos(campoElenco.getText(), "Elenco do Filme");
         verificaCampos(campoClassificacao.getText(), "Classificação do Filme");
 
-        if (permitirExecao) {
+        if (permitirExcecao) {
             service.salvar(new Filme(campoNomeFilme.getText(), campoDiretor.getText(), campoDuracaoMinuto.getText(), campoElenco.getText(), campoClassificacao.getText()));
             campoNomeFilme.setText("");
             campoDiretor.setText("");
@@ -141,7 +141,7 @@ public class LocadoraForm extends JFrame {
 
         } catch (RuntimeException e){
             JOptionPane.showMessageDialog(this, e.getMessage());
-            permitirExecao = Boolean.FALSE;
+            permitirExcecao = Boolean.FALSE;
         }
     }
     private void verificaDuracao(String valor) {
@@ -151,10 +151,11 @@ public class LocadoraForm extends JFrame {
             Integer.parseInt(valor);
         }catch (NumberFormatException en){
             JOptionPane.showMessageDialog(this, "A duração do filme deve está em minutos");
-            permitirExecao = Boolean.FALSE;
+            permitirExcecao = Boolean.FALSE;
         } catch (RuntimeException e){
             JOptionPane.showMessageDialog(this, e.getMessage());
-            permitirExecao = Boolean.FALSE;
+            permitirExcecao = Boolean.FALSE;
         }
     }
+
 }
